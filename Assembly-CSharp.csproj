@@ -48,7 +48,12 @@
   <ItemGroup>
      <Compile Include="Assets\groundmove.cs" />
      <Compile Include="Assets\objectmove.cs" />
+     <Compile Include="Assets\undergroundmove.cs" />
      <None Include="Assets\curved.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{43BFDA92-31AD-BDA0-C6D6-6DB3CC62B273}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
