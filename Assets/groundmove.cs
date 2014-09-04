@@ -8,14 +8,19 @@ public class groundmove : MonoBehaviour {
 		
 	}
 	
-	float speed = 0.9f;
+	public float speed = 0.9f;
 	
 	
+	public const float conspeed = 0.9f;
+
+
 
 	public bool isroad=true;
 
 
 	int count;
+
+
 
 	//Offset the material texture at a constant rate
 	void LateUpdate () {
@@ -27,13 +32,15 @@ public class groundmove : MonoBehaviour {
 
 
 
-		float offset = Time.time * speed;                            
+		float texoffset = Time.time * speed;                            
+
+		float offset = Time.time * conspeed;                            
 
 
 		if (count < 5) {
 
 			if(isroad)
-						renderer.material.mainTextureOffset = new Vector2 (0, -offset);
+						renderer.material.mainTextureOffset = new Vector2 (0, -texoffset);
 				} else {
 
 			if(isroad)

@@ -8,7 +8,7 @@ public class undergroundmove : MonoBehaviour {
 		
 	}
 	
-	float speed = 0.9f;
+	public float speed = 0.9f;
 	
 	
 	
@@ -33,17 +33,22 @@ public class undergroundmove : MonoBehaviour {
 		if (count > 5) {
 			
 			if(isroad)
+	
 				renderer.material.mainTextureOffset = new Vector2 (0, -offset);
+			    
+
+
+
 		} else {
 		
 
 
-/*
+
 			if(isroad)
 				transform.Translate(new Vector3 (0,0, -offset/40));
 			else
 				transform.Translate(new Vector3 (0, -offset/40,0));
-*/			
+
 			
 			
 		}

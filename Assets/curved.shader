@@ -11,7 +11,7 @@
     {
     
         Tags {"Queue" = "Geometry" "RenderType" = "Opaque"}
-        Pass 
+       Pass 
         {
             Tags {"LightMode" = "ForwardBase"}                      // This Pass tag is important or Unity may not give it the correct light information.
            		CGPROGRAM
@@ -22,6 +22,13 @@
                 #include "UnityCG.cginc"
                 #include "AutoLight.cginc"
                
+               
+               
+               	float4 _QOffset;
+			float _Dist;
+	
+	
+	
                	struct vertex_input
                	{
                		float4 vertex : POSITION;
@@ -47,9 +54,28 @@
                 vertex_output vert (vertex_input v)
                 {
                     vertex_output o;
-                    o.pos = mul( UNITY_MATRIX_MVP, v.vertex);
-                    o.uv = v.texcoord.xy;
-					
+                
+                             float4 vPos = mul (UNITY_MATRIX_MV, v.vertex);
+			   
+			     float zOff = vPos.z/_Dist;
+			  
+			  
+			      vPos += _QOffset*zOff*zOff;
+		
+			 	 
+			 	    o.pos = mul (UNITY_MATRIX_P, vPos);
+	
+	
+	
+	
+                  //      o.pos = mul( UNITY_MATRIX_MVP, v.vertex);
+                
+        //                o.uv = v.texcoord;
+			
+			o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
+			
+			//	  	  o.uv = mul( UNITY_MATRIX_TEXTURE0, v.texcoord );
+			 	
 					o.lightDir = ObjSpaceLightDir(v.vertex);
 					
 					o.normal = v.normal;
@@ -152,7 +178,7 @@
 			 
                     
                    o.pos = mul( UNITY_MATRIX_MVP, v.vertex);
-                    o.uv = v.texcoord.xy;
+                    o.uv = v.texcoord;
                 
               //     	o.uv = mul( UNITY_MATRIX_TEXTURE0, v.texcoord );
 			   
