@@ -27,7 +27,7 @@ public class groundmove : MonoBehaviour {
 
 		count = (int)Time.time;
 
-		print("My Counter : "+count);
+	//	print("My Counter : "+count);
 
 
 
@@ -37,7 +37,7 @@ public class groundmove : MonoBehaviour {
 		float offset = Time.time * conspeed;                            
 
 
-		if (count < 5) {
+		if (count < 5000) {
 
 			if(isroad)
 						renderer.material.mainTextureOffset = new Vector2 (0, -texoffset);

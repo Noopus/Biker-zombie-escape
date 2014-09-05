@@ -23,8 +23,25 @@ var rotationDamping = 3.0;
 @script AddComponentMenu("Camera-Control/Smooth Follow")
 
 
+function Start()
+{
+
+
+	
+}
+
+var counter:int;
+
 function LateUpdate () {
 	// Early out if we don't have a target
+	
+	
+	
+	counter=Time.time;
+	
+	if(counter<20)
+	{
+	
 	if (!target)
 		return;
 	
@@ -54,4 +71,8 @@ function LateUpdate () {
 	
 	// Always look at the target
 	transform.LookAt (target);
+	
+	}
+	
+	
 }

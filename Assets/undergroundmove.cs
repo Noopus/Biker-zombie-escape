@@ -22,7 +22,7 @@ public class undergroundmove : MonoBehaviour {
 		
 		count = (int)Time.time;
 		
-		print("My Counter : "+count);
+	//	print("My Counter : "+count);
 		
 		
 		

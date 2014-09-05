@@ -20,10 +20,9 @@ function Start () {
 	// Make the rigid body not change rotation
    	if (rigidbody)
 		rigidbody.freezeRotation = true;
-}
 
-function LateUpdate () {
-    if (target) {
+
+  if (target) {
         x += Input.GetAxis("Mouse X") * xSpeed * 0.02;
         y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02;
  		
@@ -35,6 +34,14 @@ function LateUpdate () {
         transform.rotation = rotation;
         transform.position = position;
     }
+    
+    
+    
+
+}
+
+function LateUpdate () {
+  
 }
 
 static function ClampAngle (angle : float, min : float, max : float) {

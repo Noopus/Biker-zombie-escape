@@ -46,8 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\bikemove.cs" />
      <Compile Include="Assets\groundmove.cs" />
      <Compile Include="Assets\objectmove.cs" />
+     <Compile Include="Assets\skeletonmove.cs" />
      <Compile Include="Assets\undergroundmove.cs" />
      <None Include="Assets\curved.shader" />
   </ItemGroup>
