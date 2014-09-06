@@ -21,12 +21,12 @@ public class bikemove : MonoBehaviour {
 	void Update () {
 
 
-		if (Input.GetKey (KeyCode.K)||Input.acceleration.x>0.2f) {
+		if (Input.GetKey (KeyCode.K)||Input.acceleration.x<-0.05f) {
 			goleft = true;
 			goright = false;
 			
 		} else
-		if (Input.GetKey (KeyCode.L)||Input.acceleration.x<-0.2f) {
+		if (Input.GetKey (KeyCode.L)||Input.acceleration.x>0.05f) {
 			goleft = false;
 			goright = true;
 			
