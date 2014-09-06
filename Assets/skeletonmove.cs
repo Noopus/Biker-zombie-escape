@@ -7,34 +7,87 @@ public class skeletonmove : MonoBehaviour
 
 
 
+
+	float rotz;
+
+	Vector3 iniangles,curangles;
+
 	void Start ()
 	{
+
+		iniangles = transform.eulerAngles;
+
+		curangles = Vector3.zero;
+
+		rotz = 0;
+
+
 	}
+
+
+
+	bool goleft,goright;
+
 	void Update ()
 	{
 
 		Vector3 rot = spine.rotation.eulerAngles;
 		// Detect key input and add or subtract from the x rotation (scaling
 		// by deltaTime to make this speed independent from the frame rate)
-		if (Input.GetKey (KeyCode.K) && rot.y > 266) {
-			//			rot.y -= Time.deltaTime * 50.0f;
-				
-				//		this.transform.Translate (Vector3.left * 0.1f);
+	
 
-
+		if (Input.GetKey (KeyCode.K)) {
+						goleft = true;
+						goright = false;
 
 				} else
-		
-		if (Input.GetKey (KeyCode.L) && rot.y < 274) {
-			//			rot.y += Time.deltaTime * 50.0f;
-				//		this.transform.Translate (-Vector3.left * 0.1f);
-
+			if (Input.GetKey (KeyCode.L)) {
+						goleft = false;
+						goright = true;
+				
 				} else {
-
+			goleft=false;
+			goright=false;
 
 				}
 
 
+//		if (Input.GetKey (KeyCode.K)) {
+		if(goleft)
+		{
+		//		rot.z += Time.deltaTime * 30.0f;
+				
+						//		this.transform.Translate (Vector3.left * 0.1f);
+
+						curangles.z += 80 * Time.deltaTime;
+
+				
+				} else
+		
+	//	if (Input.GetKey (KeyCode.L)) {
+	
+			if(goright)
+		{
+			//		rot.z -= Time.deltaTime * 30.0f;
+						//		this.transform.Translate (-Vector3.left * 0.1f);
+
+						curangles.z -= 80 * Time.deltaTime;
+
+
+
+				} else {
+
+
+						if (curangles.z < 0)
+								curangles.z += 100 * Time.deltaTime;
+						if (curangles.z > 0)
+								curangles.z -= 100 * Time.deltaTime;
+
+				}
+
+
+
+		/*
 		if(!Input.GetKey(KeyCode.L)&&!Input.GetKey(KeyCode.K))
 		if(rot.y<270)
 		{
@@ -49,13 +102,24 @@ public class skeletonmove : MonoBehaviour
 			rot.y-=Time.deltaTime*10;
 		}
 
-		
-		
-		print ("This is log so ... "+rot.y);
+		*/
+
+		print ("This is log so ... "+rot.z);
 
 
 		// Apply the new rotation
-		spine.rotation = Quaternion.Euler(rot);
+		//spine.rotation = Quaternion.Euler(rot);
+
+		curangles.x=Mathf.Clamp(curangles.x,-15,15);
+
+		curangles.y=Mathf.Clamp(curangles.y,-15,15);
+
+		curangles.z=Mathf.Clamp(curangles.z,-35,35);
+
+
+
+		transform.eulerAngles=iniangles+curangles;
+
 
 
 

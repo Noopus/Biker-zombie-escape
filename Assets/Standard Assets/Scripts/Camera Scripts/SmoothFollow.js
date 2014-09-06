@@ -39,8 +39,6 @@ function LateUpdate () {
 	
 	counter=Time.time;
 	
-	if(counter<20)
-	{
 	
 	if (!target)
 		return;
@@ -72,7 +70,7 @@ function LateUpdate () {
 	// Always look at the target
 	transform.LookAt (target);
 	
-	}
+	
 	
 	
 }
