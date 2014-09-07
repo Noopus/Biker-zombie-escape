@@ -28,28 +28,38 @@ public class skeletonmove : MonoBehaviour
 
 	bool goleft,goright;
 
+	float iPx;
+
+
 	void Update ()
 	{
+
+
+
+		iPx = Input.acceleration.x;
+
+
 
 		Vector3 rot = spine.rotation.eulerAngles;
 		// Detect key input and add or subtract from the x rotation (scaling
 		// by deltaTime to make this speed independent from the frame rate)
 	
 
-		if (Input.GetKey (KeyCode.K)) {
-						goleft = true;
-						goright = false;
-
-				} else
-			if (Input.GetKey (KeyCode.L)) {
-						goleft = false;
-						goright = true;
-				
-				} else {
+		if (Input.GetKey (KeyCode.K)||iPx<-0.1f) {
+			goleft = true;
+			goright = false;
+			
+		} else
+		if (Input.GetKey (KeyCode.L)||iPx>0.1f) {
+			goleft = false;
+			goright = true;
+			
+		} else {
 			goleft=false;
 			goright=false;
-
-				}
+			
+		}
+		
 
 
 //		if (Input.GetKey (KeyCode.K)) {
@@ -59,7 +69,7 @@ public class skeletonmove : MonoBehaviour
 				
 						//		this.transform.Translate (Vector3.left * 0.1f);
 
-						curangles.z += 80 * Time.deltaTime;
+			curangles.z += 10*(1+Mathf.Abs(iPx)) * Time.deltaTime;
 
 				
 				} else
@@ -71,7 +81,7 @@ public class skeletonmove : MonoBehaviour
 			//		rot.z -= Time.deltaTime * 30.0f;
 						//		this.transform.Translate (-Vector3.left * 0.1f);
 
-						curangles.z -= 80 * Time.deltaTime;
+						curangles.z -= 10*(1+Mathf.Abs(iPx)) * Time.deltaTime;
 
 
 
@@ -79,9 +89,9 @@ public class skeletonmove : MonoBehaviour
 
 
 						if (curangles.z < 0)
-								curangles.z += 100 * Time.deltaTime;
+								curangles.z += 50 * Time.deltaTime;
 						if (curangles.z > 0)
-								curangles.z -= 100 * Time.deltaTime;
+								curangles.z -= 50 * Time.deltaTime;
 
 				}
 
@@ -104,8 +114,6 @@ public class skeletonmove : MonoBehaviour
 
 		*/
 
-		print ("This is log so ... "+rot.z);
-
 
 		// Apply the new rotation
 		//spine.rotation = Quaternion.Euler(rot);
@@ -114,7 +122,7 @@ public class skeletonmove : MonoBehaviour
 
 		curangles.y=Mathf.Clamp(curangles.y,-15,15);
 
-		curangles.z=Mathf.Clamp(curangles.z,-35,35);
+		curangles.z=Mathf.Clamp(curangles.z,-15,15);
 
 
 

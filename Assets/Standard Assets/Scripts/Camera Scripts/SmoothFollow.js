@@ -32,6 +32,19 @@ function Start()
 
 var counter:int;
 
+
+	var degrees=0;
+
+
+	var goleft;
+
+var goright;
+
+
+var follow;
+
+var iPx:float;
+
 function LateUpdate () {
 	// Early out if we don't have a target
 	
@@ -42,6 +55,9 @@ function LateUpdate () {
 	
 	if (!target)
 		return;
+	
+	
+	
 	
 	// Calculate the current rotation angles
 	var wantedRotationAngle = target.eulerAngles.y;
@@ -61,14 +77,101 @@ function LateUpdate () {
 	
 	// Set the position of the camera on the x-z plane to:
 	// distance meters behind the target
-	transform.position = target.position;
-	transform.position -= currentRotation * Vector3.forward * distance;
+//	transform.position = target.position;
+	
+	
+	
+//	transform.position -= currentRotation * Vector3.forward * distance;
 
 	// Set the height of the camera
-	transform.position.y = currentHeight;
+//	transform.position.y = currentHeight;
 	
 	// Always look at the target
-	transform.LookAt (target);
+	
+	
+		if (Input.GetKey (KeyCode.K)||iPx>0.3f) {
+			goleft = true;
+			goright = false;
+			
+		} else
+		if (Input.GetKey (KeyCode.L)||iPx<-0.3f) {
+			goleft = false;
+			goright = true;
+			
+		} else {
+			goleft=false;
+			goright=false;
+			
+		}
+
+
+
+/*
+
+
+
+	//	if (Input.GetKey (KeyCode.K)) {
+		if(goleft)
+		{
+
+						this.transform.Translate (Vector3.left * (0.1f+degrees));
+			
+						//	transform.RotateAround (target.position, Vector3.down, degrees * Time.deltaTime);
+						degrees += 0.005f;
+			
+				} else
+			
+//		if (Input.GetKey (KeyCode.L)) {
+			if(goright)
+		{
+
+						this.transform.Translate (-Vector3.left * (0.1f+degrees));
+
+						degrees += 0.005f;
+
+						//		transform.RotateAround (target.position, Vector3.forward, -degrees * Time.deltaTime);
+
+				} else {
+			degrees=0;
+				}
+
+*/
+
+if(target.transform.position.x>-3.5f&&target.transform.position.x<3.5f)
+{
+follow=true;
+}
+else
+{
+follow=false;
+}
+
+if(follow==false)
+{
+/*
+if(this.transform.position.x<0)
+{
+  this.transform.position.x=-2.8f;
+}
+else
+if(this.transform.position.x>0)
+{
+  this.transform.position.x=2.8f;
+}
+*/
+
+
+}
+
+if(follow)
+this.transform.position.x=target.transform.position.x;
+
+
+//print("cam x : "+this.transform.position.x);
+
+	
+	
+//	transform.LookAt (target);
 	
 	
 	

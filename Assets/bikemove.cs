@@ -6,6 +6,11 @@ public class bikemove : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
+		speed = 1;
+		moveThreshold = 0.2f;
+
+		movex = 0;
+
 	}
 
 
@@ -17,16 +22,45 @@ public class bikemove : MonoBehaviour {
 	bool goleft,goright;
 
 
+
+
+	float speed,moveThreshold,movex,iPx;
+
+
 	// Update is called once per frame
 	void Update () {
 
 
-		if (Input.GetKey (KeyCode.K)||Input.acceleration.x<-0.05f) {
+		iPx = Input.acceleration.x;
+
+
+
+
+/*
+	
+
+		if(Mathf.Abs (iPx)>moveThreshold)
+		{
+
+
+			movex=Mathf.Sign (iPx)*speed;
+
+			this.transform.Translate (Vector3.left * (movex));
+
+
+
+		}
+
+*/
+
+
+
+		if (Input.GetKey (KeyCode.K)||iPx<-0.05f) {
 			goleft = true;
 			goright = false;
 			
 		} else
-		if (Input.GetKey (KeyCode.L)||Input.acceleration.x>0.05f) {
+		if (Input.GetKey (KeyCode.L)||iPx>0.05f) {
 			goleft = false;
 			goright = true;
 			
@@ -40,14 +74,19 @@ public class bikemove : MonoBehaviour {
 
 
 
+
+
 	//	if (Input.GetKey (KeyCode.K)) {
 		if(goleft)
 		{
 
-						this.transform.Translate (Vector3.left * (0.1f+degrees));
-			
+						this.transform.Translate (Vector3.left * (-iPx/2));
+		
+		//	this.transform.Translate (Vector3.left * (0.05f));
+
+
 						//	transform.RotateAround (target.position, Vector3.down, degrees * Time.deltaTime);
-						degrees += 0.005f;
+			//			degrees += 0.005f;
 			
 				} else
 			
@@ -55,9 +94,13 @@ public class bikemove : MonoBehaviour {
 			if(goright)
 		{
 
-						this.transform.Translate (-Vector3.left * (0.1f+degrees));
+						this.transform.Translate (Vector3.left * (-iPx/2));
 
-						degrees += 0.005f;
+
+			//this.transform.Translate (Vector3.left * (-0.05f));
+
+
+			//			degrees += 0.005f;
 
 						//		transform.RotateAround (target.position, Vector3.forward, -degrees * Time.deltaTime);
 
@@ -65,6 +108,13 @@ public class bikemove : MonoBehaviour {
 			degrees=0;
 				}
 
+
+
+
+
+
+
+		print (""+transform.position.x);
 
 
 	
