@@ -11,8 +11,11 @@ public class bikemove : MonoBehaviour {
 
 		movex = 0;
 
+<<<<<<< HEAD
 		delay = 0.005f;
 
+=======
+>>>>>>> FETCH_HEAD
 	}
 
 
@@ -26,7 +29,11 @@ public class bikemove : MonoBehaviour {
 
 
 
+<<<<<<< HEAD
 	float speed,moveThreshold,movex,iPx,delay,accel;
+=======
+	float speed,moveThreshold,movex,iPx;
+>>>>>>> FETCH_HEAD
 
 
 	// Update is called once per frame
@@ -57,12 +64,20 @@ public class bikemove : MonoBehaviour {
 
 
 
+<<<<<<< HEAD
 		if (Input.GetKey (KeyCode.K)||iPx>delay) {
+=======
+		if (Input.GetKey (KeyCode.K)||iPx<-0.05f) {
+>>>>>>> FETCH_HEAD
 			goleft = true;
 			goright = false;
 			
 		} else
+<<<<<<< HEAD
 		if (Input.GetKey (KeyCode.L)||iPx<-delay) {
+=======
+		if (Input.GetKey (KeyCode.L)||iPx>0.05f) {
+>>>>>>> FETCH_HEAD
 			goleft = false;
 			goright = true;
 			
@@ -78,12 +93,18 @@ public class bikemove : MonoBehaviour {
 						accel = iPx/2;
 				}
 
+
+
 	//	if (Input.GetKey (KeyCode.K)) {
 		if(goleft)
 		{
 
+<<<<<<< HEAD
 			if(Mathf.Abs(iPx)>delay)
 						this.transform.Translate (Vector3.left * (-(accel-delay)));
+=======
+						this.transform.Translate (Vector3.left * (-iPx/2));
+>>>>>>> FETCH_HEAD
 		
 		//	this.transform.Translate (Vector3.left * (0.05f));
 
@@ -102,7 +123,16 @@ public class bikemove : MonoBehaviour {
 
 			//this.transform.Translate (Vector3.left * (-0.05f));
 
+<<<<<<< HEAD
 
+=======
+						this.transform.Translate (Vector3.left * (-iPx/2));
+
+
+			//this.transform.Translate (Vector3.left * (-0.05f));
+
+
+>>>>>>> FETCH_HEAD
 			//			degrees += 0.005f;
 
 						//		transform.RotateAround (target.position, Vector3.forward, -degrees * Time.deltaTime);

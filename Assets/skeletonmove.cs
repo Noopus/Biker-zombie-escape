@@ -30,13 +30,17 @@ public class skeletonmove : MonoBehaviour
 
 	float iPx;
 
+<<<<<<< HEAD
 	int count;
+=======
+>>>>>>> FETCH_HEAD
 
 	void Update ()
 	{
 
 
 
+<<<<<<< HEAD
 		if (count > 5) {
 						count = 0;
 				} else 
@@ -52,6 +56,8 @@ public class skeletonmove : MonoBehaviour
 				}
 
 
+=======
+>>>>>>> FETCH_HEAD
 		iPx = Input.acceleration.x;
 
 
@@ -85,7 +91,11 @@ public class skeletonmove : MonoBehaviour
 				
 						//		this.transform.Translate (Vector3.left * 0.1f);
 
+<<<<<<< HEAD
 			curangles.z += 10*(2+Mathf.Abs(iPx/2)) * Time.deltaTime;
+=======
+			curangles.z += 10*(1+Mathf.Abs(iPx)) * Time.deltaTime;
+>>>>>>> FETCH_HEAD
 
 				
 				} else
@@ -97,7 +107,11 @@ public class skeletonmove : MonoBehaviour
 			//		rot.z -= Time.deltaTime * 30.0f;
 						//		this.transform.Translate (-Vector3.left * 0.1f);
 
+<<<<<<< HEAD
 						curangles.z -= 10*(2+Mathf.Abs(iPx/2)) * Time.deltaTime;
+=======
+						curangles.z -= 10*(1+Mathf.Abs(iPx)) * Time.deltaTime;
+>>>>>>> FETCH_HEAD
 
 
 
@@ -105,9 +119,15 @@ public class skeletonmove : MonoBehaviour
 
 
 						if (curangles.z < 0)
+<<<<<<< HEAD
 								curangles.z += 30 * Time.deltaTime;
 						if (curangles.z > 0)
 								curangles.z -= 30 * Time.deltaTime;
+=======
+								curangles.z += 50 * Time.deltaTime;
+						if (curangles.z > 0)
+								curangles.z -= 50 * Time.deltaTime;
+>>>>>>> FETCH_HEAD
 
 				}
 
@@ -138,7 +158,11 @@ public class skeletonmove : MonoBehaviour
 
 	//	curangles.y=Mathf.Clamp(curangles.y,-15,15);
 
+<<<<<<< HEAD
 		curangles.z=Mathf.Clamp(curangles.z,-10,10);
+=======
+		curangles.z=Mathf.Clamp(curangles.z,-15,15);
+>>>>>>> FETCH_HEAD
 
 
 
